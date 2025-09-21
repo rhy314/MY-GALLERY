@@ -1,0 +1,129 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Light Theme Variables */
+:root {
+  --bg: white;
+  --text: black;
+  --accent: navy;
+}
+
+/* Dark Theme Variables */
+body.dark-mode {
+  --bg: #111;
+  --text: #f1f1f1;
+  --accent: #5b7fff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden; /* no vertical scroll */
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ccc;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+body.dark-mode header {
+  background: rgba(20,20,20,0.8);
+  border-bottom: 1px solid #444;
+}
+
+#theme-toggle {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Gallery Layout */
+.gallery {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.gallery-item {
+  flex: 0 0 100%; /* each item = full screen width */
+  height: 100vh;
+  scroll-snap-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-item img {
+  max-width: 70%;
+  max-height: 60%;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
+
+.info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.info h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.info p {
+  font-size: 1rem;
+  color: gray;
+}
+
+/* Favourite Button */
+.fav-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.3s;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+}
+
+.fav-btn.favourited {
+  color: gold;
+  content: "★";
+}
